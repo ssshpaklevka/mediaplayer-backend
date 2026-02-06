@@ -38,7 +38,7 @@ export class SwaggerConfig {
         'device-jwt',
       )
       .addServer('https://api.production.com', 'Продакшен сервер')
-      .addServer(`https://api.development.com`, 'Девелопмент сервер')
+      .addServer(`https://statosphera.ru/api/media-player`, 'Девелопмент сервер')
       .addServer(`http://localhost:${this.PORT}`, 'Локальный сервер')
       .build();
   }
