@@ -33,7 +33,7 @@ export class Device {
   @JoinColumn({ name: 'group_id' })
   group: Group | null;
 
-  @Column({ type: 'datetime', name: 'last_seen', nullable: true })
+  @Column({ type: 'timestamp', name: 'last_seen', nullable: true })
   lastSeen: Date | null;
 
   @CreateDateColumn({ name: 'created_at' })

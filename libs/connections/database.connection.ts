@@ -5,12 +5,14 @@ export class DatabaseConnection {
   static getOptions(config: ConfigService): TypeOrmModuleOptions {
     const isProduction = config.get<string>('NODE_ENV') === 'production';
 
+    const password = config.get<string>('DB_PASSWORD', '');
+
     return {
       type: 'postgres',
       host: config.get<string>('DB_HOST', 'localhost'),
       port: config.get<number>('DB_PORT', 5432),
       username: config.get<string>('DB_USERNAME', 'postgres'),
-      password: config.get<string>('DB_PASSWORD', ''),
+      password: String(password || '').trim(),
       database: config.get<string>('DB_NAME', 'media_player'),
       autoLoadEntities: true,
       synchronize: !isProduction, // В продакшене false, используйте миграции
