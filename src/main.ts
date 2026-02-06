@@ -15,7 +15,7 @@ async function bootstrap(): Promise<void> {
 
   const PORT = configService.getOrThrow<number>('PORT');
 
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api/media-player');
   app.enableCors(new CorsConfig(configService).getCorsOptions());
   app.useGlobalPipes(new ValidationPipe(ValidationConfig.getOptions()));
 
