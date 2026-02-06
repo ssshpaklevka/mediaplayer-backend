@@ -51,9 +51,6 @@ export class SwaggerConfig {
   }
 
   public setup(app: INestApplication, path: string = 'api/docs'): void {
-    if (this.isProduction) {
-      return;
-    }
     const document = this.createDocument(app);
     SwaggerModule.setup(path, app, document);
   }
