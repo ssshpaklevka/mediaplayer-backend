@@ -8,17 +8,10 @@ export class S3StorageService {
   private readonly s3: S3Client;
 
   constructor(private configService: ConfigService) {
-    const endpoint = this.configService.get<string>('S3_ENDPOINT');
-    const region = this.configService.get<string>('S3_REGION');
-    const accessKeyId =
-      this.configService.get<string>('S3_KEY') ??
-      this.configService.get<string>('SELECTEL_ACCESS_KEY');
-    const secretAccessKey =
-      this.configService.get<string>('S3_SECRET') ??
-      this.configService.get<string>('SELECTEL_SECRET_KEY');
-    if (!endpoint || !region || !accessKeyId || !secretAccessKey) {
-      throw new Error('Отсутствует конфигурация S3');
-    }
+    const endpoint = this.configService.getOrThrow<string>('S3_ENDPOINT');
+    const region = this.configService.getOrThrow<string>('S3_REGION');
+    const accessKeyId = this.configService.getOrThrow<string>('SELECTEL_ACCESS_KEY');
+    const secretAccessKey = this.configService.getOrThrow<string>('SELECTEL_SECRET_KEY');
     this.s3 = new S3Client({
       endpoint: endpoint,
       region: region,
