@@ -50,7 +50,10 @@ export class SwaggerConfig {
     });
   }
 
-  public setup(app: INestApplication, path: string = 'api/media-player/docs'): void {
+  public setup(
+    app: INestApplication,
+    path: string = 'api/media-player/docs',
+  ): void {
     const document = this.createDocument(app);
     SwaggerModule.setup(path, app, document);
   }
