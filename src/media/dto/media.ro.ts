@@ -10,7 +10,10 @@ export class MediaRo {
   })
   groupIds: string[];
 
-  @ApiProperty({ description: 'Ссылка на CDN (после конвертации)', nullable: true })
+  @ApiProperty({
+    description: 'Ссылка на CDN (после конвертации)',
+    nullable: true,
+  })
   url: string | null;
 
   @ApiProperty({ description: 'Название', nullable: true })

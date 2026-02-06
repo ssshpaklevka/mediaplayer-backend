@@ -34,7 +34,12 @@ export class Media {
   })
   status: 'PENDING' | 'READY' | 'FAILED';
 
-  @Column({ type: 'varchar', length: 512, nullable: true, name: 'processing_error' })
+  @Column({
+    type: 'varchar',
+    length: 512,
+    nullable: true,
+    name: 'processing_error',
+  })
   processingError: string | null;
 
   @Column({ type: 'varchar', length: 255, nullable: true })

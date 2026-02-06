@@ -10,8 +10,12 @@ export class S3StorageService {
   constructor(private configService: ConfigService) {
     const endpoint = this.configService.getOrThrow<string>('S3_ENDPOINT');
     const region = this.configService.getOrThrow<string>('S3_REGION');
-    const accessKeyId = this.configService.getOrThrow<string>('SELECTEL_ACCESS_KEY');
-    const secretAccessKey = this.configService.getOrThrow<string>('SELECTEL_SECRET_KEY');
+    const accessKeyId = this.configService.getOrThrow<string>(
+      'SELECTEL_ACCESS_KEY',
+    );
+    const secretAccessKey = this.configService.getOrThrow<string>(
+      'SELECTEL_SECRET_KEY',
+    );
     this.s3 = new S3Client({
       endpoint: endpoint,
       region: region,

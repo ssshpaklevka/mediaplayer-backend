@@ -25,7 +25,10 @@ export class AdminService {
     return this.adminRepo.save(admin);
   }
 
-  async validatePassword(admin: Admin, plainPassword: string): Promise<boolean> {
+  async validatePassword(
+    admin: Admin,
+    plainPassword: string,
+  ): Promise<boolean> {
     return bcrypt.compare(plainPassword, admin.passwordHash);
   }
 

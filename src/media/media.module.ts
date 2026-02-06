@@ -9,11 +9,7 @@ import { VideoProcessorService } from './video-processor.service';
 import { S3Module } from '@libs/s3/s3.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Media, Group]),
-    ConfigModule,
-    S3Module,
-  ],
+  imports: [TypeOrmModule.forFeature([Media, Group]), ConfigModule, S3Module],
   controllers: [MediaController],
   providers: [MediaService, VideoProcessorService],
   exports: [MediaService],

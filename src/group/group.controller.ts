@@ -24,7 +24,13 @@ import { UpdateGroupDto } from './dto/update-group.dto';
 import { GroupRo } from './dto/group.ro';
 import { AdminJwtAuthGuard } from '../auth/guards/admin-jwt-auth.guard';
 
-function toGroupRo(entity: { id: string; name: string; enabled: boolean; createdAt: Date; updatedAt: Date }): GroupRo {
+function toGroupRo(entity: {
+  id: string;
+  name: string;
+  enabled: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}): GroupRo {
   return {
     id: entity.id,
     name: entity.name,

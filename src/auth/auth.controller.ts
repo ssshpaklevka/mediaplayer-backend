@@ -1,15 +1,5 @@
-import {
-  Controller,
-  Post,
-  Body,
-  UnauthorizedException,
-} from '@nestjs/common';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiResponse,
-  ApiBody,
-} from '@nestjs/swagger';
+import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { AdminLoginDto } from './dto/admin-login.dto';
@@ -29,7 +19,9 @@ export class AuthController {
   @ApiResponse({
     status: 200,
     description: 'Результат',
-    schema: { properties: { created: { type: 'boolean' }, message: { type: 'string' } } },
+    schema: {
+      properties: { created: { type: 'boolean' }, message: { type: 'string' } },
+    },
   })
   async adminSeed() {
     return this.adminService.seedAdmin();
@@ -46,7 +38,10 @@ export class AuthController {
   @ApiResponse({ status: 401, description: 'Неверный логин или пароль' })
   async adminLogin(@Body() dto: AdminLoginDto) {
     const admin = await this.adminService.findByUsername(dto.username);
-    if (!admin || !(await this.adminService.validatePassword(admin, dto.password))) {
+    if (
+      !admin ||
+      !(await this.adminService.validatePassword(admin, dto.password))
+    ) {
       throw new UnauthorizedException('Неверный логин или пароль');
     }
     const secret = this.configService.get<string>(

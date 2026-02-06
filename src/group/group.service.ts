@@ -35,7 +35,9 @@ export class GroupService {
   }
 
   async findByIds(ids: string[]): Promise<Group[]> {
-    if (ids.length === 0) return [];
+    if (ids.length === 0) {
+      return [];
+    }
     return this.groupRepository.findBy({ id: In(ids) });
   }
 
